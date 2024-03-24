@@ -10,10 +10,9 @@ data class Pizza(
     @Id
     @GeneratedValue
     var id: Long? = null,
-    var name: String,
-    var price: Double? = null,
+    var name: String? = null,
     @Relationship(type = "HAS_CRUST", direction = Relationship.Direction.OUTGOING)
-    var crust: Crust,
+    var crust: Crust? = null,
     @Relationship(type = "HAS_TOPPING", direction = Relationship.Direction.OUTGOING)
-    var toppings: List<Topping> ? = null
+    var toppings: List<Topping>? = null
 )

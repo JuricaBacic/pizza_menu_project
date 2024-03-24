@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CrustRepository : Neo4jRepository<Crust, Long> {
+    fun findByTypeAndSize(type: String, size: String): List<Crust>
 }

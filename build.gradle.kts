@@ -30,17 +30,9 @@ dependencies {
 	annotationProcessor ("org.projectlombok:lombok:1.18.22")
 	testAnnotationProcessor ("org.projectlombok:lombok:1.18.22")
 
-
 	implementation ("org.springframework:spring-context:5.3.16")
-
-
-	// Spring Annotation Support
 	implementation ("org.springframework:spring-beans:5.3.16")
-
-	// Spring Context Support
 	implementation ("org.springframework:spring-context-support:5.3.16")
-
-
 
 	testImplementation("junit:junit:4.13.1")
 	testImplementation("io.kotest:kotest-runner-junit5-jvm:5.7.0")

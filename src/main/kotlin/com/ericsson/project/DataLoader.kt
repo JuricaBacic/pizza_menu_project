@@ -28,7 +28,6 @@ class DataLoader(
             val randomToppings = toppings.shuffled().take(Random.nextInt(1, toppings.size + 1))
             val pizza = Pizza(
                 name = "Pizza $index",
-                price = Random.nextDouble(8.0, 20.0), // Example price range
                 crust = randomCrust,
                 toppings = randomToppings
             )
