@@ -7,13 +7,14 @@ import com.ericsson.project.repository.PizzaRepository
 import com.ericsson.project.services.PizzaService
 import io.kotest.matchers.shouldBe
 import org.junit.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class PizzaServiceTest(
-    private val pizzaService: PizzaService,
-    private val pizzaRepository: PizzaRepository
-) {
+class PizzaServiceTest {
+
+    @Autowired private lateinit var pizzaService: PizzaService
+    @Autowired private lateinit var pizzaRepository: PizzaRepository
 
     @Test
     fun `find all pizza`() {
@@ -116,7 +117,6 @@ class PizzaServiceTest(
                 )
             )
         )
-
         pizzas.forEach { pizza ->
             pizzaRepository.save(pizza)
         }
@@ -127,7 +127,4 @@ class PizzaServiceTest(
         specificPizza.crust shouldBe Crust(2L, CrustType.CHEESE_FILLED.name, CrustSize.SMALL.name)
         specificPizza.toppings shouldBe listOf(Topping(2L, ToppingsName.PEPPERONI.name), Topping(3L, ToppingsName.MOZZARELLA.name))
     }
-
-
-
 }
