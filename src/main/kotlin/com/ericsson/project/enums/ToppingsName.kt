@@ -1,6 +1,6 @@
-package org.example.enums
+package com.ericsson.project.enums
 
-enum class ToppingsName(val name: String) {
+enum class ToppingsName(val type: String) {
     MOZZARELLA("Mozzarella"),
     TOMATO_SAUCE("Tomato Sauce"),
     PEPPERONI("Pepperoni"),

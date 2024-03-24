@@ -1,4 +1,4 @@
-package org.example.enums
+package com.ericsson.project.enums
 
 enum class CrustType(val type: String) {
     THIN("Thin"),
