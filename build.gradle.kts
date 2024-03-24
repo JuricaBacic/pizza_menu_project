@@ -5,7 +5,6 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.4"
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
-	id("io.kotest") version "0.4.11"
 }
 
 group = "com.ericsson"
@@ -26,6 +25,16 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	implementation ("org.projectlombok:lombok:1.18.22")
+	annotationProcessor ("org.projectlombok:lombok:1.18.22")
+	testAnnotationProcessor ("org.projectlombok:lombok:1.18.22")
+
+
+
+
+	testImplementation("junit:junit:4.13.1")
+	testImplementation("io.kotest:kotest-runner-junit5-jvm:5.7.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
