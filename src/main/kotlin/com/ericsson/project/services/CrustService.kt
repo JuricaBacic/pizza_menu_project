@@ -7,7 +7,4 @@ import org.springframework.stereotype.Service
 class CrustService(
     private val crustRepository: CrustRepository
 ) {
-
-
-
 }
