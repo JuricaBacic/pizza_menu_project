@@ -1,7 +1,6 @@
 package com.ericsson.project.services
 
 import com.ericsson.project.NodeEntity.Pizza
-import com.ericsson.project.repository.CrustRepository
 import com.ericsson.project.repository.PizzaRepository
 import com.ericsson.project.repository.ToppingRepository
 import org.example.models.PizzaOrderRequestModel
@@ -12,8 +11,8 @@ import org.springframework.web.server.ResponseStatusException
 @Service
 class PizzaService(
     private val pizzaRepository: PizzaRepository,
-    private val crustRepository: CrustRepository,
-    private val toppingRepository: ToppingRepository
+    private val crustService: CrustService,
+    private val toppingService: ToppingService
 ) {
     companion object {
         const val CUSTOM_PIZZA_NAME = "Custom Pizza"
@@ -33,13 +32,11 @@ class PizzaService(
     fun placePizzaOrder(pizzaOrderRequest: PizzaOrderRequestModel): Pizza {
         val crust = pizzaOrderRequest.crustType?.type?.let { crustType ->
             pizzaOrderRequest.crustSize?.size?.let { crustSize ->
-            crustRepository.findByTypeAndSize(crustType,
-                crustSize
-            ).first()
+            crustService.getCrustByTypeAndSize(crustType, crustSize)
         } } ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid crust size or type.")
 
         val toppings = pizzaOrderRequest.toppings?.map { name ->
-            toppingRepository.findByName(name.type)?.first() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid topping: $name.")
+            toppingService.findToppingByName(name)
         }
 
         val pizza = Pizza(
