@@ -2,6 +2,8 @@ package com.ericsson.project.Controller
 
 import com.ericsson.project.NodeEntity.Pizza
 import com.ericsson.project.services.PizzaService
+import com.ericsson.project.translators.PizzaOrderRequestWrapper
+import com.ericsson.project.translators.toModel
 import org.example.models.PizzaOrderRequestModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -31,9 +33,9 @@ class PizzaController() {
     }
 
     @PostMapping
-    fun placeOrder(@RequestBody pizzaRequestModel: PizzaOrderRequestModel): ResponseEntity<String> {
+    fun placeOrder(@RequestBody pizzaOrderRequestWrapper: PizzaOrderRequestWrapper): ResponseEntity<String> {
 
-        pizzaService.placePizzaOrder(pizzaRequestModel)
+        pizzaService.placePizzaOrder(pizzaOrderRequestWrapper.toModel())
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Order placed successfully")
     }

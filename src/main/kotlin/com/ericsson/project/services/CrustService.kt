@@ -11,10 +11,11 @@ import org.springframework.web.server.ResponseStatusException
 class CrustService(
     private val crustRepository: CrustRepository
 ) {
-    fun getCrustByTypeAndSize(crustType : String, crustSize: String) : Crust? {
-       return crustRepository.findByTypeAndSize(crustType,
-            crustSize)?.first()
-           ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid crust size or type.")
-}
-
+    fun getCrustByTypeAndSize(crustType: String, crustSize: String): Crust? {
+        return crustRepository.findByTypeAndSize(
+            crustType,
+            crustSize
+        )?.first()
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid crust size or type.")
+    }
 }
