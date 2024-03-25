@@ -1,7 +1,6 @@
 package com.ericsson.project.services
 
 import com.ericsson.project.NodeEntity.Topping
-import com.ericsson.project.enums.ToppingsName
 import com.ericsson.project.repository.ToppingRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service

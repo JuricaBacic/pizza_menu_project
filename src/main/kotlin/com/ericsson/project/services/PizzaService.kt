@@ -2,7 +2,6 @@ package com.ericsson.project.services
 
 import com.ericsson.project.NodeEntity.Pizza
 import com.ericsson.project.repository.PizzaRepository
-import com.ericsson.project.repository.ToppingRepository
 import org.example.models.PizzaOrderRequestModel
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
@@ -32,8 +31,9 @@ class PizzaService(
     fun placePizzaOrder(pizzaOrderRequest: PizzaOrderRequestModel): Pizza {
         val crust = pizzaOrderRequest.crustType?.type?.let { crustType ->
             pizzaOrderRequest.crustSize?.size?.let { crustSize ->
-            crustService.getCrustByTypeAndSize(crustType, crustSize)
-        } } ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid crust size or type.")
+                crustService.getCrustByTypeAndSize(crustType, crustSize)
+            }
+        } ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid crust size or type.")
 
         val toppings = pizzaOrderRequest.toppings?.map { toppings ->
             toppingService.findToppingByName(toppings.type)
