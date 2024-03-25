@@ -9,8 +9,8 @@ import org.springframework.web.server.ResponseStatusException
 
 @Service
 class ToppingService(private val toppingRepository: ToppingRepository) {
-    fun findToppingByName(toppingName: ToppingsName): Topping {
-        return toppingRepository.findByName(toppingName.name)?.first()
+    fun findToppingByName(toppingName: String): Topping {
+        return toppingRepository.findAllByName(toppingName)?.first()
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid topping: $toppingName.")
     }
 }

@@ -35,10 +35,9 @@ class PizzaService(
             crustService.getCrustByTypeAndSize(crustType, crustSize)
         } } ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid crust size or type.")
 
-        val toppings = pizzaOrderRequest.toppings?.map { name ->
-            toppingService.findToppingByName(name)
+        val toppings = pizzaOrderRequest.toppings?.map { toppings ->
+            toppingService.findToppingByName(toppings.type)
         }
-
         val pizza = Pizza(
             name = CUSTOM_PIZZA_NAME,
             crust = crust,
