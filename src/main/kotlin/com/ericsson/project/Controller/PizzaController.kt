@@ -4,7 +4,6 @@ import com.ericsson.project.NodeEntity.Pizza
 import com.ericsson.project.services.PizzaService
 import com.ericsson.project.translators.PizzaOrderRequestWrapper
 import com.ericsson.project.translators.toModel
-import org.example.models.PizzaOrderRequestModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

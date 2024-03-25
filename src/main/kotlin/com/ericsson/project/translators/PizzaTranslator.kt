@@ -6,7 +6,7 @@ import com.ericsson.project.enums.ToppingsName
 import org.example.models.PizzaOrderRequestModel
 
 fun PizzaOrderRequestWrapper.toModel(): PizzaOrderRequestModel = PizzaOrderRequestModel(
-   crustType = crustType,
+    crustType = crustType,
     crustSize = crustSize,
     toppings = toppings
 )
